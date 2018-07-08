@@ -1,6 +1,7 @@
 package linked.list.merge.two.sorted;
 
 import linked.list.ListNode;
+import linked.list.ListUtil;
 
 public class Solution {
 
@@ -26,14 +27,6 @@ public class Solution {
         return tmpHead.next;
     }
 
-    public void printList(ListNode head) {
-        while (head != null) {
-            System.out.printf("[%d] ", head.val);
-            head = head.next;
-        }
-        System.out.println();
-    }
-
     public static void main(String[] args) {
         ListNode a = new ListNode(1);
         ListNode b = new ListNode(2);
@@ -48,9 +41,8 @@ public class Solution {
         e.next = f;
 
         Solution solution = new Solution();
-        solution.printList(a);
-        solution.printList(d);
-        solution.printList(solution.mergeTwoLists(a, d));
-
+        ListUtil.printList(a);
+        ListUtil.printList(d);
+        ListUtil.printList(solution.mergeTwoLists(a, d));
     }
 }
