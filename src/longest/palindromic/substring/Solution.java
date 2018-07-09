@@ -3,7 +3,7 @@ package longest.palindromic.substring;
 public class Solution {
 
     /**
-     * Dynamic Programming Solution
+     * Dynamic Programming Solution1
      * @param s
      * @return longest palindromic substring
      */
