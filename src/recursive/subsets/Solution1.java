@@ -14,15 +14,15 @@ public class Solution1 {
         return result;
     }
 
-    public void generate(int i, int[] nums, LinkedList<Integer> item, List<List<Integer>> result) {
+    public void generate(int i, int[] nums, LinkedList<Integer> itemQueue, List<List<Integer>> result) {
         if (i >= nums.length) {
             return;
         }
-        item.add(nums[i]);
-        result.add((LinkedList<Integer>) item.clone());
-        generate(i + 1, nums, item, result);
-        item.pollLast();
-        generate(i + 1, nums, item,result);
+        itemQueue.add(nums[i]);
+        result.add((LinkedList<Integer>) itemQueue.clone());
+        generate(i + 1, nums, itemQueue, result);
+        itemQueue.pollLast();
+        generate(i + 1, nums, itemQueue, result);
     }
 
 
