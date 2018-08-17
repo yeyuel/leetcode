@@ -27,7 +27,7 @@ public class Solution {
         int i = 0;
         int j = 0;
         while (i < subVect1.size() && j < subVect2.size()) {
-            if (subVect1.get(i)[0] <= subVect2.get(i)[0]) {
+            if (subVect1.get(i)[0] <= subVect2.get(j)[0]) {
                 count[subVect1.get(i)[1]] += j;
                 vect.add(subVect1.get(i));
                 i++;
