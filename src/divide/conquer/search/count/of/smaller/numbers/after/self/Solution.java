@@ -7,28 +7,26 @@ public class Solution {
 
     public List<Integer> countSmaller(int[] nums) {
         List<int[]> vect = new ArrayList<>();
-        int count[] = new int[nums.length];
+        List<Integer> count = new ArrayList<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
             vect.add(new int[] {nums[i], i});
-            count[i] = 0;
+            count.add(0);
         }
         mergeSort(vect, count);
-        List<Integer> result = new ArrayList<>();
-        for (int c : count) {
-            result.add(c);
-        }
-        return result;
+        return count;
     }
 
     private void mergeSortTwoVec(List<int[]> subVect1,
                                  List<int[]> subVect2,
                                  List<int[]> vect,
-                                 int[] count) {
+                                 List<Integer> count) {
         int i = 0;
         int j = 0;
+
         while (i < subVect1.size() && j < subVect2.size()) {
             if (subVect1.get(i)[0] <= subVect2.get(j)[0]) {
-                count[subVect1.get(i)[1]] += j;
+                int i1 = subVect1.get(i)[1];
+                count.set(i1, count.get(i1) + j);
                 vect.add(subVect1.get(i));
                 i++;
             } else {
@@ -37,7 +35,8 @@ public class Solution {
             }
         }
         for (; i < subVect1.size(); i++) {
-            count[subVect1.get(i)[1]] += j;
+            int i1 = subVect1.get(i)[1];
+            count.set(i1, count.get(i1) + j);
             vect.add(subVect1.get(i));
         }
         for (; j < subVect2.size(); j++) {
@@ -46,14 +45,14 @@ public class Solution {
     }
 
     private void mergeSort(List<int[]> vec,
-                           int[] count) {
+                           List<Integer> count) {
         if (vec.size() < 2) {
             return;
         }
         int mid = vec.size() / 2;
         List<int[]> subVec1 = new ArrayList<>();
         List<int[]> subVec2 = new ArrayList<>();
-        for (int i = 0; i < mid; i++) {
+            for (int i = 0; i < mid; i++) {
             subVec1.add(vec.get(i));
         }
         for (int i = mid; i < vec.size(); i++) {
