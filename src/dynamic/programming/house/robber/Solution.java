@@ -1,4 +1,4 @@
-package dynamic.programming.climb.house.robber;
+package dynamic.programming.house.robber;
 
 public class Solution {
 

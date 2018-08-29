@@ -1,4 +1,4 @@
-package dynamic.programming.climb.maximum.subarray;
+package dynamic.programming.maximum.subarray;
 
 public class Solution {
 
