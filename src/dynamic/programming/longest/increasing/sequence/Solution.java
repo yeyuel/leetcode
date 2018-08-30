@@ -65,12 +65,14 @@ public class Solution {
                     if (target == stack.get(mid)) {
                         index = mid;
                     } else if (target < stack.get(mid)) {
-                        if (mid == 0 || target > stack.get(mid - 1)) {
+                        if (mid == 0
+                                || mid == stack.size() - 1
+                                || target > stack.get(mid - 1)) {
                             index = mid;
                         }
                         end = mid - 1;
                     } else if (target > stack.get(mid)) {
-                        if (mid == stack.size() - 1 || target < stack.get(mid + 1)) {
+                        if (target < stack.get(mid + 1)) {
                             index = mid + 1;
                         }
                         begin = mid + 1;
