@@ -1,6 +1,6 @@
 package binary.tree.right.side.view;
 
-import binary.tree.TreeNode;
+import binary.TreeNode;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

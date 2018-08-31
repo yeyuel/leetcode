@@ -1,6 +1,7 @@
 package binary.search.tree.sorted.array.to.bst;
 
-import binary.tree.TreeNode;
+import binary.TreeNode;
+import binary.TreeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] sample = {-10,-3,0,5,9};
-        solution.sortedArrayToBST(sample);
+        TreeNode root = solution.sortedArrayToBST(sample);
+        TreeUtil.preorderPrint(root);
     }
 }

@@ -1,6 +1,6 @@
 package binary.tree.path.sum.two;
 
-import binary.tree.TreeNode;
+import binary.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

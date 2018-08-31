@@ -1,6 +1,6 @@
 package binary.tree.lowest.common.ancestor;
 
-import binary.tree.TreeNode;
+import binary.TreeNode;
 
 import java.util.LinkedList;
 import java.util.List;

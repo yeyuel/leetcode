@@ -1,6 +1,6 @@
 package binary.tree.flatten.to.linked.list;
 
-import binary.tree.TreeNode;
+import binary.TreeNode;
 
 public class Solution {
 
