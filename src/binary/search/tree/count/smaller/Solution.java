@@ -7,7 +7,7 @@ public class Solution {
 
     class BSTNode {
         int val;
-        int count = 0;
+        int count = 0; // left children size
         BSTNode left = null;
         BSTNode right = null;
         BSTNode(int x) {
@@ -20,14 +20,14 @@ public class Solution {
         if (nums.length == 0) {
             return count;
         }
-        BSTNode[] nodeVec = new BSTNode[nums.length];
+        List<BSTNode> nodeVec = new ArrayList<>();
         for (int i = nums.length - 1; i >= 0 ; i--) {
-            nodeVec[i] = new BSTNode(nums[i]);
+            nodeVec.add(new BSTNode(nums[i]));
         }
         count.add(0);
-        for (int i = 1; i < nodeVec.length; i++) {
+        for (int i = 1; i < nodeVec.size(); i++) {
             int countSmall = 0;
-            countSmall = bstInsert(nodeVec[0], nodeVec[i], countSmall);
+            countSmall = bstInsert(nodeVec.get(0), nodeVec.get(i), countSmall);
             count.add(countSmall);
         }
         List<Integer> ret = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums = {5,2,6,1};
+        int[] nums = {5,2,6,6,1};
         System.out.println(solution.countSmaller(nums));
     }
 }
