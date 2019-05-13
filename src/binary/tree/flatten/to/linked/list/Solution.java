@@ -9,9 +9,6 @@ public class Solution {
     }
 
     private TreeNode preorder(TreeNode node) {
-        if (node == null) {
-            return null;
-        }
         if (node.left == null && node.right == null) {
             return node;
         }
