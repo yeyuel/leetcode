@@ -19,7 +19,7 @@ public class Solution {
 
         int find(int p) {
             while (p != ids[p]) {
-                ids[p] = ids[ids[p]];
+//                ids[p] = ids[ids[p]];
                 p = ids[p];
             }
             return p;
