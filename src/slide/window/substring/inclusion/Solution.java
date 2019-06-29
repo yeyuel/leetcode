@@ -24,7 +24,7 @@ public class Solution {
                 count++;
             }
 
-            if (r >= s2Arr.length) {
+            if (r >= s1Arr.length) {
                 hash[s2Arr[l] - 'a']++;
                 if (hash[s2Arr[l] - 'a'] >= 1) {
                     count --;
