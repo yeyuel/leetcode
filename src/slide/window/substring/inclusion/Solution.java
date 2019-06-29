@@ -1,4 +1,4 @@
-package slide.window.substring;
+package slide.window.substring.inclusion;
 
 
 public class Solution {
