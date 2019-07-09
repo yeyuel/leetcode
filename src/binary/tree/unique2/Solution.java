@@ -8,28 +8,27 @@ import java.util.List;
 public class Solution {
 
     public List<TreeNode> generateTrees(int n) {
-        return generateSubTree(1, n + 1);
+        if (n < 1) {
+            return new ArrayList<>();
+        }
+        return generateSubTree(1, n);
     }
 
-    private List<TreeNode> generateSubTree(int l, int r) {
+    private List<TreeNode> generateSubTree(int start, int end) {
         List<TreeNode> subTree = new ArrayList<>();
 
-        if (l >= r) {
+        if (start > end) {
             subTree.add(null);
             return subTree;
         }
-        if (l == r - 1) {
-            subTree.add(new TreeNode(l));
-            return subTree;
-        }
-        for (int i = 1; i < r; i++) {
-            List<TreeNode> leftSubTree = generateSubTree(l, i);
-            List<TreeNode> rightSubTree = generateSubTree(i + 1, r);
+        for (int i = start; i <= end; i++) {
+            List<TreeNode> leftSubTree = generateSubTree(start, i - 1);
+            List<TreeNode> rightSubTree = generateSubTree(i + 1, end);
 
-            for (int j = 1; j < leftSubTree.size(); j++) {
+            for (int j = 0; j < leftSubTree.size(); j++) {
                 for (int k = 0; k < rightSubTree.size(); k++) {
                     TreeNode root = new TreeNode(i);
-                    root.left = leftSubTree.get(l);
+                    root.left = leftSubTree.get(j);
                     root.right = rightSubTree.get(k);
                     subTree.add(root);
                 }
