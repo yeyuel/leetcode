@@ -22,6 +22,13 @@ public class Solution {
                 }
                 int begin = j + 1;
                 int end = nums.length - 1;
+
+                // optimize performance
+                int rangeMin = nums[i] + nums[j] + nums[begin] + nums[begin + 1];
+                int rangeMax = nums[i] + nums[j] + nums[end] + nums[end - 1];
+                if (rangeMin > target || rangeMax < target) {
+                    continue;
+                }
                 while (begin < end) {
                     int currentSum = nums[i] + nums[j] + nums[begin] + nums[end];
                     if (currentSum == target) {
