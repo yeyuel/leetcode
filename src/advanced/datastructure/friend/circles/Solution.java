@@ -33,10 +33,10 @@ public class Solution {
             }
             if (sizes[i] < sizes[j]) {
                 ids[i] = j;
-                sizes[i] += sizes[j];
+                sizes[j] += sizes[i];
             } else {
                 ids[j] = i;
-                sizes[j] += sizes[i];
+                sizes[i] += sizes[j];
             }
             count--;
         }
