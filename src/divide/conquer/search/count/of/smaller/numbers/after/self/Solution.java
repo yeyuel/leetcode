@@ -52,7 +52,7 @@ public class Solution {
         int mid = vec.size() / 2;
         List<int[]> subVec1 = new ArrayList<>();
         List<int[]> subVec2 = new ArrayList<>();
-            for (int i = 0; i < mid; i++) {
+        for (int i = 0; i < mid; i++) {
             subVec1.add(vec.get(i));
         }
         for (int i = mid; i < vec.size(); i++) {
