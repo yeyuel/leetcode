@@ -38,10 +38,36 @@ public class Solution {
         return -1;
     }
 
+    public int search1(int[] nums, int target) {
+        int begin = 0, end = nums.length - 1;
+        while (begin <= end) {
+            int mid = (begin + end) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[begin] < nums[mid]) {
+                if (target >= nums[begin] && target < nums[mid]) {
+                    end = mid - 1;
+                } else {
+                    begin = mid + 1;
+                }
+            } else if (nums[begin] > nums[mid]) {
+                if (target <= nums[end] && target > nums[mid]) {
+                    begin = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            } else {
+                begin = mid + 1;
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] sample = new int[] {4,5,6,7,0,1,2};
-        System.out.println(solution.search(sample, 0));
-        System.out.println(solution.search(sample, 3));
+        System.out.println(solution.search1(sample, 0));
+        System.out.println(solution.search1(sample, 3));
     }
 }
