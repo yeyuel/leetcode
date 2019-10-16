@@ -3,7 +3,7 @@ package dynamic.programming.climb.stairs;
 public class Solution {
 
     public int climbStairs(int n) {
-        int[] dp = new int[n + 3];
+        int[] dp = new int[n];
         dp[0] = 1;
         dp[1] = 2;
         for (int i = 2; i < n; i++) {
