@@ -1,5 +1,6 @@
 package dynamic.programming.longest.increasing.sequence;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Solution {
@@ -84,11 +85,31 @@ public class Solution {
         return stack.size();
     }
 
+    public int lengthOfLIS4(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[nums.length];
+        int lis = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int index = Arrays.binarySearch(dp, 0, lis, nums[i]);
+            if (index < 0) {
+                index = -(index + 1);
+            }
+            dp[index] = nums[i];
+            if (index == lis) {
+                lis ++;
+            }
+        }
+        return lis;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] sample = {10,9,2,5,3,7,101,18};
         System.out.println(solution.lengthOfLIS(sample));
         System.out.println(solution.lengthOfLIS2(sample));
         System.out.println(solution.lengthOfLIS3(sample));
+        System.out.println(solution.lengthOfLIS4(sample));
     }
 }
