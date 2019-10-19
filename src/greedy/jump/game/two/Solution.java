@@ -20,9 +20,24 @@ public class Solution {
         return jumpMin;
     }
 
+    public int jump1(int[] nums) {
+        int pre = 0; // current coverage
+        int cur = 0; // future coverage
+        int jumpMin = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > pre) {
+                pre = cur;
+                jumpMin ++;
+            }
+            cur = Math.max(cur, nums[i] + i);
+        }
+        return jumpMin;
+    }
+
     public static void main(String[] args) {
         int[] sample = new int[] {2, 3, 1, 1, 4};
         Solution solution = new Solution();
         System.out.println(solution.jump(sample));
+        System.out.println(solution.jump1(sample));
     }
 }
