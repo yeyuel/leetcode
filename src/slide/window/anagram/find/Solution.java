@@ -28,7 +28,7 @@ public class Solution {
                 count++;
             }
 
-            if (r > pLength - 1) {
+            while (r - l + 1 > pLength) {
                 hash[sArr[l] - 'a'] ++;
 
                 if (hash[sArr[l] - 'a'] > 0) {
