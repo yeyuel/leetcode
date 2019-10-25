@@ -2,7 +2,7 @@ package slide.window.k.different.subarray;
 
 public class Solution {
 
-    public int subArraysWithKDistinct(int[] A, int k) {
+    public int subarraysWithKDistinct(int[] A, int K) {
         if (A == null || A.length == 0) {
             return 0;
         }
@@ -16,8 +16,8 @@ public class Solution {
                 count ++;
             }
 
-            while (hash[A[l]] > 1 || count > k) {
-                if (count > k) {
+            while (hash[A[l]] > 1 || count > K) {
+                if (count > K) {
                     result = 1;
                     count--;
                 } else {
@@ -27,7 +27,7 @@ public class Solution {
                 l ++;
             }
 
-            if (count == k) {
+            if (count == K) {
                 results += result;
             }
         }
@@ -39,6 +39,6 @@ public class Solution {
         int k = 3;
 
         Solution solution = new Solution();
-        System.out.println(solution.subArraysWithKDistinct(a, k));
+        System.out.println(solution.subarraysWithKDistinct(a, k));
     }
 }
