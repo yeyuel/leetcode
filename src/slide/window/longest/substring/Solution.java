@@ -15,7 +15,7 @@ public class Solution {
         for (int r = 0; r < sArr.length; r++) {
             hash[sArr[r]]++;
 
-            while (hash[sArr[r]] != 1) {
+            while (hash[sArr[r]] > 1) {
                 hash[sArr[l]]--;
                 l ++;
             }
