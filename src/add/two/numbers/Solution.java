@@ -3,47 +3,25 @@ package add.two.numbers;
 public class Solution {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode current1 = l1;
-        ListNode current2 = l2;
-        ListNode resultHead = null;
-        ListNode current = null;
-        boolean carry = false;
-        while (current1 != null ||  current2 != null) {
-            int position;
-            if (current1 != null && current2 != null) {
-                position = current1.val + current2.val;
-            } else if(current1 != null){
-                position = current1.val;
-            } else {
-                position = current2.val;
-            }
-            if (carry) {
-                position += 1;
-            }
-            if (position >= 10) {
-                position -= 10;
-                carry = true;
-            } else {
-                carry = false;
-            }
-            if (resultHead == null) {
-                resultHead = new ListNode(position);
-                current = resultHead;
-            } else {
-                current.next = new ListNode(position);
-                current = current.next;
-            }
-            if (current1 != null) {
-                current1 = current1.next;
-            }
-            if (current2 != null) {
-                current2 = current2.next;
-            }
+        ListNode dummyHead = new ListNode(0);
+        ListNode p = l1, q = l2, current = dummyHead;
+        int carry = 0;
+        while (p != null || q != null)
+        {
+            int x = (p != null) ? p.val : 0;
+            int y = (q != null) ? q.val : 0;
+            int sum = carry + x + y;
+            carry = sum / 10;
+            current.next = new ListNode(sum % 10);
+            current = current.next;
+            if (p != null) p = p.next;
+            if (q != null) q = q.next;
         }
-        if (carry) {
-            current.next = new ListNode(1);
+        if (carry > 0)
+        {
+            current.next = new ListNode(carry);
         }
-        return resultHead;
+        return dummyHead.next;
     }
 
     public static ListNode buildList(int[] nums) {
