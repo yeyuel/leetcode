@@ -181,12 +181,12 @@ public class Solution
             TrieNode node = root;
             for (int i = 0; i < word.length(); i++)
             {
-                char curentChar = word.charAt(i);
-                if (!node.containsKey(curentChar))
+                char currentChar = word.charAt(i);
+                if (!node.containsKey(currentChar))
                 {
-                    node.put(curentChar, new TrieNode());
+                    node.put(currentChar, new TrieNode());
                 }
-                node = node.get(curentChar);
+                node = node.get(currentChar);
             }
             node.setEnd();
         }
