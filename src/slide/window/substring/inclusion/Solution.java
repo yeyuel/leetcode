@@ -24,7 +24,7 @@ public class Solution {
                 count++;
             }
 
-            if (r >= s1Arr.length) {
+            while (r - l + 1 > s1Arr.length) {
                 hash[s2Arr[l] - 'a']++;
                 if (hash[s2Arr[l] - 'a'] >= 1) {
                     count --;
@@ -39,7 +39,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s1 = "ab";
+        String s1 = "bd";
         String s2 = "eidbaooo";
         Solution solution = new Solution();
         System.out.println(solution.checkInclusion(s1, s2));
