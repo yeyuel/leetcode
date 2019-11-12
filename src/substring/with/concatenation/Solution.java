@@ -22,16 +22,14 @@ public class Solution {
         int oneWordSize = words[0].length();
         int allWordSize = words.length * oneWordSize;
         for (int i = 0; i < s.length() - allWordSize + 1; i++) {
-            String tmp = s.substring(i, i + allWordSize);
-            Map<String, Integer> d = new HashMap<>();
-            for (int j = 0; j < tmp.length(); j+= oneWordSize) {
-                String key = tmp.substring(j, j + oneWordSize);
+            String currentWindow = s.substring(i, i + allWordSize);
+            Map<String, Integer> d = new HashMap<>(wordsMap);
+            for (int j = 0; j < currentWindow.length(); j += oneWordSize) {
+                String key = currentWindow.substring(j, j + oneWordSize);
                 if (d.containsKey(key)) {
-                    Integer lastValue = d.get(key);
-                    if (lastValue == 1) {
-                        break;
-                    }
                     d.put(key, d.get(key) - 1);
+                    if (d.get(key) == 0)
+                        d.remove(key);
                 } else {
                     break;
                 }
