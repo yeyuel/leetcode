@@ -5,10 +5,8 @@ package permutations;
 
 import sun.plugin.WJcovUtil;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -50,9 +48,38 @@ public class Solution
         }
     }
 
+    private void backtrack(int n, ArrayList<Integer> nums,
+            List<List<Integer>> output, int first)
+    {
+        if (first == n)
+        {
+            output.add(new ArrayList<>(nums));
+        }
+        for (int i = first; i < n; i++)
+        {
+            Collections.swap(nums, first, i);
+            backtrack(n, nums, output, first + 1);
+            Collections.swap(nums, first, i);
+        }
+    }
+
+    public List<List<Integer>> permute1(int[] nums)
+    {
+        List<List<Integer>> output = new LinkedList<>();
+        ArrayList<Integer> numList = new ArrayList<>();
+        for (int num : nums)
+        {
+            numList.add(num);
+        }
+        int n = nums.length;
+        backtrack(n, numList, output, 0);
+        return output;
+    }
+
     public static void main(String[] args)
     {
         int[] input = { 1, 2, 3 };
         System.out.println(new Solution().permute(input));
+        System.out.println(new Solution().permute1(input));
     }
 }
