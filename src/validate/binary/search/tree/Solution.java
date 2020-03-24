@@ -4,9 +4,6 @@
 package validate.binary.search.tree;
 
 import binary.TreeNode;
-
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 import java.util.Stack;
 
 
@@ -83,6 +80,7 @@ public class Solution
         TreeNode c1 = new TreeNode(3);
         a1.left = b1;
         a1.right = c1;
+        System.out.println(solution.isValidBst(a1));
         System.out.println(solution.isValidBST(a1));
 
         TreeNode a2 = new TreeNode(5);
@@ -94,6 +92,7 @@ public class Solution
         a2.right = c2;
         c2.left = d2;
         c2.right = e2;
+        System.out.println(solution.isValidBst(a2));
         System.out.println(solution.isValidBST(a2));
     }
 }
