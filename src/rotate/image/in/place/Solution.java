@@ -40,6 +40,34 @@ public class Solution
         }
     }
 
+    public void rotate1(int[][] matrix)
+    {
+        int n = matrix.length;
+        for (int i = 0; i < n / 2 + n % 2; i++)
+        {
+            for (int j = 0; j < n / 2; j++)
+            {
+                int[] tmp = new int[4];
+                int row = i;
+                int col = j;
+                for (int k = 0; k < 4; k++)
+                {
+                    tmp[k] = matrix[row][col];
+                    int x = row;
+                    row = col;
+                    col = n - 1 - x;
+                }
+                for (int k = 0; k < 4; k++)
+                {
+                    matrix[row][col] = tmp[(k + 3) % 4];
+                    int x = row;
+                    row = col;
+                    col = n - 1 - x;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args)
     {
         int[][] matrix1 = {
@@ -51,9 +79,9 @@ public class Solution
                 { 8, 5, 2 },
                 { 9, 6, 3 } };
         Solution solution = new Solution();
-        solution.rotate(matrix1);
-        solution.rotate(matrix2);
-        System.out.println(Arrays.toString(matrix1));
-        System.out.println(Arrays.toString(matrix2));
+        solution.rotate1(matrix1);
+        solution.rotate1(matrix2);
+        System.out.println(Arrays.deepToString(matrix1));
+        System.out.println(Arrays.deepToString(matrix2));
     }
 }
