@@ -3,10 +3,7 @@
  */
 package permutations;
 
-import sun.plugin.WJcovUtil;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 /**
