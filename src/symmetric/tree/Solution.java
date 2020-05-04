@@ -53,6 +53,6 @@ public class Solution
         c.left = f;
         c.right = g;
 
-        solution.isSymmetric(a);
+        System.out.println(solution.isSymmetric(a));
     }
 }
