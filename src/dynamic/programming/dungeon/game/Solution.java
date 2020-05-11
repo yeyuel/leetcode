@@ -28,7 +28,9 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] sample = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
+        int[][] sample = {{-2, -3, 3},
+                          {-5, -10, 1},
+                          {10, 30, -5}};
         System.out.println(solution.calculateMinimumHP(sample));
     }
 }
