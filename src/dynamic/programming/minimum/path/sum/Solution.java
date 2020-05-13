@@ -25,7 +25,9 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] sample = {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
+        int[][] sample = {{1, 3, 1},
+                          {1, 5, 1},
+                          {4, 2, 1}};
         System.out.println(solution.minPathSum(sample));
     }
 }
