@@ -1,6 +1,7 @@
 package binary.search.tree.count.smaller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Solution {
@@ -20,21 +21,16 @@ public class Solution {
         if (nums.length == 0) {
             return count;
         }
-        List<BSTNode> nodeVec = new ArrayList<>();
-        for (int i = nums.length - 1; i >= 0 ; i--) {
-            nodeVec.add(new BSTNode(nums[i]));
-        }
         count.add(0);
-        for (int i = 1; i < nodeVec.size(); i++) {
-            int countSmall = 0;
-            countSmall = bstInsert(nodeVec.get(0), nodeVec.get(i), countSmall);
-            count.add(countSmall);
+        if (nums.length < 2) {
+            return count;
         }
-        List<Integer> ret = new ArrayList<>();
-        for (int i = count.size() - 1; i >=0 ; i--) {
-            ret.add(count.get(i));
+        BSTNode root = new BSTNode(nums[nums.length - 1]);
+        for (int i = nums.length - 2; i >=0 ; i--) {
+            count.add(bstInsert(root, new BSTNode(nums[i]), 0));
         }
-        return ret;
+        Collections.reverse(count);
+        return count;
     }
 
     private int bstInsert(BSTNode node, BSTNode insertNode, Integer countSmall) {
