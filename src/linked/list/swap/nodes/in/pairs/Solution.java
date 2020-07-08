@@ -46,6 +46,38 @@ public class Solution
         return newTail;
     }
 
+    public ListNode swapPairs2(ListNode head)
+    {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode preTail = dummy;
+        while (true)
+        {
+            ListNode twoStep = preTail;
+            for (int k = 0; k < 2 && twoStep != null; k ++)
+            {
+                twoStep = twoStep.next;
+            }
+            if (twoStep == null)
+            {
+                break;
+            }
+            ListNode next = twoStep.next;
+            preTail = reverseTwo(preTail);
+            preTail.next = next;
+        }
+        return dummy.next;
+    }
+
+    private ListNode reverseTwo(ListNode preTail)
+    {
+        ListNode newTail = preTail.next;
+        ListNode newHead = preTail.next.next;
+        preTail.next = newHead;
+        newHead.next = newTail;
+        return newTail;
+    }
+
     public static void main(String[] args)
     {
         ListNode one = new ListNode(1);
@@ -58,7 +90,7 @@ public class Solution
 
         ListUtil.printList(one);
         Solution solution = new Solution();
-        one = solution.swapPairs(one);
+        one = solution.swapPairs2(one);
         ListUtil.printList(one);
     }
 }
