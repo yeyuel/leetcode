@@ -27,10 +27,38 @@ public class Solution {
         }
         BSTNode root = new BSTNode(nums[nums.length - 1]);
         for (int i = nums.length - 2; i >=0 ; i--) {
-            count.add(bstInsert(root, new BSTNode(nums[i]), 0));
+            count.add(bstInsert2(root, new BSTNode(nums[i])));
         }
         Collections.reverse(count);
         return count;
+    }
+
+    private int bstInsert2(BSTNode node, BSTNode insertNode)
+    {
+        int countSmall = 0;
+        BSTNode cur = node;
+        while (cur != insertNode)
+        {
+            if (insertNode.val <= cur.val)
+            {
+                if (cur.left == null)
+                {
+                    cur.left = insertNode;
+                }
+                cur.count++;
+                cur = cur.left;
+            }
+            else
+            {
+                if (cur.right == null)
+                {
+                    cur.right = insertNode;
+                }
+                countSmall += cur.count + 1;
+                cur = cur.right;
+            }
+        }
+        return countSmall;
     }
 
     private int bstInsert(BSTNode node, BSTNode insertNode, Integer countSmall) {
