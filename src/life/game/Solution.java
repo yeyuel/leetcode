@@ -33,7 +33,7 @@ public class Solution
                         {
                             int r = (row + neighbors[i]);
                             int c = (col + neighbors[j]);
-                            if ((r < rows && r >= 0) && (c < cols && c > 0)
+                            if ((r < rows && r >= 0) && (c < cols && c >= 0)
                                     && (Math.abs(board[r][c]) == 1))
                             {
                                 liveNeighbors += 1;
