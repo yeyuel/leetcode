@@ -34,5 +34,10 @@ public class Solution
         int[] input1 = new int[] { 1, 2, 3, 1 };
         int[] input2 = new int[] { 1, 2, 3, 4 };
         int[] input3 = new int[] { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 };
+
+        Solution solution = new Solution();
+        System.out.println(solution.containsDuplicate(input1));
+        System.out.println(solution.containsDuplicate(input2));
+        System.out.println(solution.containsDuplicate(input3));
     }
 }
