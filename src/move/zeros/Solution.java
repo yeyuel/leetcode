@@ -38,8 +38,8 @@ public class Solution
             if (nums[cur] != 0)
             {
                 int tmp = nums[cur];
-                nums[lastNoneZeorFoundAt] = nums[cur];
-                nums[cur] = tmp;
+                nums[cur] = nums[lastNoneZeorFoundAt];
+                nums[lastNoneZeorFoundAt] = tmp;
                 lastNoneZeorFoundAt++;
             }
         }
