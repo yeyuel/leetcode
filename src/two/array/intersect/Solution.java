@@ -74,8 +74,14 @@ public class Solution
         int[] nums4 = new int[] { 9, 4, 9, 8, 4 };
 
         Solution solution = new Solution();
-        final int[] intersect1 = solution.intersect1(nums1, nums2);
-        final int[] intersect2 = solution.intersect1(nums3, nums4);
+        int[] intersect1 = solution.intersect1(nums1, nums2);
+        int[] intersect2 = solution.intersect1(nums3, nums4);
+
+        System.out.println(Arrays.toString(intersect1));
+        System.out.println(Arrays.toString(intersect2));
+
+        intersect1 = solution.intersect2(nums1, nums2);
+        intersect2 = solution.intersect2(nums3, nums4);
 
         System.out.println(Arrays.toString(intersect1));
         System.out.println(Arrays.toString(intersect2));
