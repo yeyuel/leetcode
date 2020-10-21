@@ -22,4 +22,18 @@ public class ListUtil {
         }
         System.out.println();
     }
+
+    public static ListNode makeList(int[] input)
+    {
+        ListNode[] nodes = new ListNode[input.length];
+        for (int i = 0; i < input.length; i++)
+        {
+            nodes[i] = new ListNode(input[i]);
+        }
+        for (int i = 0; i < nodes.length - 1; i++)
+        {
+            nodes[i].next = nodes[i + 1];
+        }
+        return nodes[0];
+    }
 }
