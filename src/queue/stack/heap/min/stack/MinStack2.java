@@ -3,9 +3,7 @@
  */
 package queue.stack.heap.min.stack;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 
 /**
@@ -17,8 +15,8 @@ import java.util.List;
  */
 public class MinStack2
 {
-    private LinkedList<Integer> stack;
-    private int minValue;
+    private LinkedList<Long> stack;
+    private long minValue;
 
     public MinStack2()
     {
@@ -30,12 +28,12 @@ public class MinStack2
     {
         if (stack.size() == 0)
         {
-            stack.add(0);
+            stack.add(0L);
             minValue = x;
         }
         else
         {
-            int diff = x - this.minValue;
+            long diff = x - this.minValue;
             stack.push(diff);
             minValue = diff > 0 ? minValue : x;
         }
@@ -45,7 +43,7 @@ public class MinStack2
     {
         if (!stack.isEmpty())
         {
-            int diff = stack.pop();
+            long diff = stack.pop();
             if (diff < 0)
             {
                 minValue -= diff;
@@ -55,20 +53,27 @@ public class MinStack2
 
     public int top()
     {
-        return stack.peek() < 0 ? minValue : stack.peek() + minValue;
+        return stack.peek() < 0 ? (int) minValue : (int) (stack.peek() + minValue);
     }
 
     public int getMin()
     {
-        return stack.isEmpty() ? -1 : minValue;
+        return stack.isEmpty() ? -1 : (int) minValue;
     }
 
     public static void main(String[] args)
     {
         MinStack2 minStack = new MinStack2();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
+        minStack.push(2147483646);
+        minStack.push(2147483646);
+        minStack.push(2147483647);
+        System.out.println(minStack.top());
+        minStack.pop();
+        System.out.println(minStack.getMin());
+        minStack.pop();
+        minStack.push(2147483647);
+        minStack.pop();
+        minStack.push(-2147483648);
         System.out.println(minStack.getMin());
         minStack.pop();
         System.out.println(minStack.top());
