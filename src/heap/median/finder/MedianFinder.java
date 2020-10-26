@@ -12,8 +12,8 @@ public class MedianFinder {
     /** initialize your data structure here. */
     public MedianFinder() {
         Comparator<Integer> comparator = Integer::compareTo;
-        smallQueue = new PriorityQueue<>(comparator);
-        bigQueue = new PriorityQueue<>(comparator.reversed());
+        smallQueue = new PriorityQueue<>(comparator); // 小顶堆存大的部分
+        bigQueue = new PriorityQueue<>(comparator.reversed()); // 大顶堆存小的部分
     }
 
     public void addNum(int num) {
