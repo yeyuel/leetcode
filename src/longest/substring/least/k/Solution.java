@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Solution {
 
-    public int longestSubstring(String s, int k) {
+    public int longestSubstring1(String s, int k) {
         int[] hash = new int[26];
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
@@ -28,18 +28,51 @@ public class Solution {
         for (int i = 0; i < split.size(); i++) {
             int len = split.get(i) - left;
             if (len > ans) {
-                ans = Math.max(ans, longestSubstring(s.substring(left, split.get(i)), k));
+                ans = Math.max(ans, longestSubstring1(s.substring(left, split.get(i)), k));
             }
             left = split.get(i) + 1;
         }
         return ans;
     }
 
+    public int longestSubstring2(String s, int k) {
+        return cnt(s, 0, s.length() - 1, k);
+    }
+
+    private int cnt(String s, int l, int r, int k) {
+        int[] chs = new int[26];
+        for (int i = l; i <= r; i++) {
+            char c = s.charAt(i);
+            chs[c - 'a']++;
+        }
+        int ll = l, rr = r;
+        while (ll <= rr && chs[s.charAt(ll) - 'a'] < k) {
+            ll++;
+        }
+        while (ll <= rr && chs[s.charAt(rr) - 'a'] < k) {
+            rr--;
+        }
+        if (rr - ll + 1 < k) {
+            return 0;
+        }
+
+        int partition = ll;
+        while (partition <= rr && chs[s.charAt(partition) - 'a'] >= k) {
+            partition++;
+        }
+        if (partition >= rr) {
+            return rr - ll + 1;
+        }
+        return Math.max(cnt(s, ll, partition - 1, k), cnt(s, partition + 1, rr, k));
+    }
+
     public static void main(String[] args) {
         String input1 = "aaabb";
         String input2 = "ababbc";
         Solution solution = new Solution();
-        System.out.println(solution.longestSubstring(input1, 3));
-        System.out.println(solution.longestSubstring(input2, 2));
+        System.out.println(solution.longestSubstring1(input1, 3));
+        System.out.println(solution.longestSubstring1(input2, 2));
+        System.out.println(solution.longestSubstring2(input1, 3));
+        System.out.println(solution.longestSubstring2(input2, 2));
     }
 }
