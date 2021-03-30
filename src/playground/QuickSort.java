@@ -19,18 +19,25 @@ public class QuickSort
     {
         if (l < r)
         {
-            int i = l, j = r, x = arr[l];
-            while (i < j)
-            {
-                while (i < j && arr[j] >= x) j--;
-                if (i < j) arr[i++] = arr[j];
-                while (i < j && arr[i] < x) i++;
-                if (i < j) arr[j--] = arr[i];
-            }
-            arr[i] = x;
-            quickSort(arr, l, i - 1);
-            quickSort(arr, i + 1, r);
+            int m = partition1(arr, l, r);
+            quickSort(arr, l, m - 1);
+            quickSort(arr, m + 1, r);
         }
+    }
+
+    private int partition1 (int[] arr, int l, int r) {
+        int i = l;
+        if (l < r) {
+            int j = r, pivot = arr[i];
+            while (i < j) {
+                while (i < j && arr[j] >= pivot) j--;
+                if (i < j) arr[i] = arr[j];
+                while (i < j && arr[i] < pivot) i++;
+                if (i < j) arr[j] = arr[i];
+            }
+            arr[i] = pivot;
+        }
+        return i;
     }
 
     public int findKthNumber(int[] arr, int k) {
