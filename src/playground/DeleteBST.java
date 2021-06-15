@@ -18,7 +18,7 @@ public class DeleteBST {
 
     public int predecessor(TreeNode root) {
         root = root.left;
-        while (root != null) root = root.right;
+        while (root.right != null) root = root.right;
         return root.val;
     }
 
