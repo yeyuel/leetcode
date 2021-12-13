@@ -7,6 +7,7 @@ public class Solution {
 
 
     public TreeNode deleteNode(TreeNode root, int key) {
+        // 找待删除节点以及父节点
         TreeNode[] result = bstSearch(root, key);
         TreeNode parent = result[0];
         TreeNode node = result[1];
@@ -15,13 +16,14 @@ public class Solution {
         }
         // include root node with both left and right children
         if (node.left != null && node.right != null) {
+            // 找前驱节点以及父节点
             TreeNode[] successorRet = findSuccessor(node);
             TreeNode successor = successorRet[1];
             deleteNode(successorRet[0], successor);
             node.val = successor.val;
             return root;
         }
-        if (parent != null) {
+        if (parent != null) { // 非根节点
             deleteNode(parent, node);
             return root;
         }
