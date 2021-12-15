@@ -15,7 +15,7 @@ public class Solution {
         searchPath(root, p, path, resultP, finish);
         path.clear();
         searchPath(root, q, path, resultQ, finish);
-        int pathLength = resultP.size() < resultQ.size() ? resultP.size() : resultQ.size();
+        int pathLength = Math.min(resultP.size(), resultQ.size());
         TreeNode result = null;
         for (int i = 0; i < pathLength; i++) {
             if (resultP.get(i) == resultQ.get(i)) {
