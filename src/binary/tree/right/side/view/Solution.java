@@ -2,24 +2,51 @@ package binary.tree.right.side.view;
 
 import binary.TreeNode;
 
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
 
+    class Tuple {
+        public TreeNode key;
+        public int val;
+        public Tuple(TreeNode key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> view = new ArrayList<>();
-        LinkedList<AbstractMap.SimpleEntry<TreeNode, Integer>> queue = new LinkedList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+
+        if (root != null) queue.addLast(root);
+        while (!queue.isEmpty()) {
+            int queueSize = queue.size();
+            for (int i = 0; i < queueSize; i++) {
+                TreeNode node = queue.peek();
+                if (i == queueSize - 1) view.add(node.val);
+                queue.pop();
+                if (node.left != null) queue.addLast(node.left);
+                if (node.right != null) queue.addLast(node.right);
+            }
+        }
+        return view;
+    }
+
+
+    public List<Integer> rightSideViewOld(TreeNode root) {
+        List<Integer> view = new ArrayList<>();
+        LinkedList<Tuple> queue = new LinkedList<>();
 
         if (root != null) {
-            queue.push(new AbstractMap.SimpleEntry<>(root, 0));
+            queue.push(new Tuple(root, 0));
         }
 
         while (!queue.isEmpty()) {
-             TreeNode node = queue.peek().getKey();
-            int depth = queue.peek().getValue();
+            TreeNode node = queue.peek().key;
+            int depth = queue.peek().val;
             queue.pop();
 
             if (view.size() == depth) {
@@ -28,10 +55,10 @@ public class Solution {
                 view.set(depth, node.val);
             }
             if (node.left != null) {
-                queue.add(new AbstractMap.SimpleEntry<>(node.left, depth + 1));
+                queue.add(new Tuple(node.left, depth + 1));
             }
             if (node.right != null) {
-                queue.add(new AbstractMap.SimpleEntry<>(node.right, depth + 1));
+                queue.add(new Tuple(node.right, depth + 1));
             }
         }
         return view;
