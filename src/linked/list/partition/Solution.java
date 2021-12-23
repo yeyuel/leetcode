@@ -12,10 +12,10 @@ public class Solution {
         while (head != null ) {
             if (head.val < x) {
                 lessPoint.next = head;
-                lessPoint = head;
+                lessPoint = lessPoint.next;
             } else {
                 morePoint.next = head;
-                morePoint = head;
+                morePoint = morePoint.next;
             }
             head = head.next;
         }
