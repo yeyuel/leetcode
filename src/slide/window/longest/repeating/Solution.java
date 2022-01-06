@@ -2,6 +2,29 @@ package slide.window.longest.repeating;
 
 public class Solution {
 
+    private int characterReplacementNew(String s, int k) {
+        if (s == null || s.length() == 0) return 0;
+
+        char[] sArr = s.toCharArray();
+        int[] hash = new int[26];
+
+        int l = 0, r = 0, max = 0, result = 0;
+        while (r < sArr.length) {
+            char c = sArr[r];
+            r++;
+
+            max = Math.max(++hash[c - 'A'], max);
+
+            while (r - l > k + max) {
+                char d = sArr[l];
+                l++;
+                hash[d - 'A']--;
+            }
+            result = Math.max(r - l, result);
+        }
+        return result;
+    }
+
     public int characterReplacement(String s, int k) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -29,5 +52,6 @@ public class Solution {
         String input = "AABABBA";
         int k = 1;
         System.out.println(new Solution().characterReplacement(input, k));
+        System.out.println(new Solution().characterReplacementNew(input, k));
     }
 }
